@@ -9,7 +9,7 @@ class Stack:
     def push(self, data):
         print(f"< push -> {data} >")
 
-        self.stack.insert(0, str(data))
+        self.stack.insert(len(self.stack), str(data))
         self.top = self.top + 1
         print(self)
 
