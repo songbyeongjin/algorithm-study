@@ -21,44 +21,68 @@ class Stack:
         print(f"< push -> {data} >")
         
         new_node = Node(data)
-        if self.head is None:
+        if self.isEmpty():
             self.head = new_node
         else:
             new_node.prev = self.head
             self.head = new_node
 
+
         print(self)
 
     def pop(self):
         print("< pop >")
-        
-        if(self.head is not None):
+        ret = None
+        if self.isEmpty():
+            print("stack is None")
+        else:
             node = self.head
+            ret = node.data
             self.head = self.head.prev
             del node
             print(self)
-        else:
-            print("stack is None")
+        
+        return ret
     
     def isEmpty(self):
-        isempty = self.head is None
-        print(f"< isEmpty ? [{isempty}] >")
-        return isempty 
+        return self.head is None 
 
 
+stack = Stack()
+stack.push(1)
+stack.push(2)
+stack.push(3)
+stack.pop()
+stack.push(4)
+stack.pop()
+stack.push(5)
+stack.pop()
+stack.pop()
+stack.pop()
+stack.pop()
 
-m_stack = Stack()
-m_stack.isEmpty()
-m_stack.push(1)
-m_stack.push(2)
-m_stack.push(3)
-m_stack.pop()
-m_stack.isEmpty()
-m_stack.push(4)
-m_stack.pop()
-m_stack.push(5)
-m_stack.pop()
-m_stack.pop()
-m_stack.pop()
-m_stack.pop()
-m_stack.isEmpty()
+# < isEmpty ? [True] >
+# < push -> 1 >
+# 1
+# < push -> 2 >
+# 2, 1
+# < push -> 3 >
+# 3, 2, 1
+# < pop >
+# 2, 1
+# < isEmpty ? [False] >
+# < push -> 4 >
+# 4, 2, 1
+# < pop >
+# 2, 1
+# < push -> 5 >
+# 5, 2, 1
+# < pop >
+# 2, 1
+# < pop >
+# 1
+# < pop >
+# 
+# < pop >
+# stack is None
+# < isEmpty ? [True] >
