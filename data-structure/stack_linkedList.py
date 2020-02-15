@@ -61,7 +61,6 @@ stack.pop()
 stack.pop()
 stack.pop()
 
-# < isEmpty ? [True] >
 # < push -> 1 >
 # 1
 # < push -> 2 >
@@ -70,7 +69,6 @@ stack.pop()
 # 3, 2, 1
 # < pop >
 # 2, 1
-# < isEmpty ? [False] >
 # < push -> 4 >
 # 4, 2, 1
 # < pop >
@@ -85,4 +83,3 @@ stack.pop()
 # 
 # < pop >
 # stack is None
-# < isEmpty ? [True] >
