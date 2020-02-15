@@ -30,7 +30,6 @@ class Stack:
         print("< pop >")
         
         if(self.head is not None):
-            value = self.head.data
             node = self.head
             self.head = self.head.prev
             del node
