@@ -1,9 +1,9 @@
 package main
 
 import (
+	"design_pattern/decorator/cipher"
+	"design_pattern/decorator/lzw"
 	"fmt"
-	"pattern/decorator/cipher"
-	"pattern/decorator/lzw"
 )
 
 type Component interface {
@@ -78,18 +78,24 @@ func (self *ReadComponent) Operator(data string) {
 
 
 func main() {
+	originalData := "Hello World!!!!"
+	fmt.Println("original data : ",originalData)
+
 	sender := &ZipComponent{
-		com: &SendComponent{},
+		com: &EncryptComponent{
+			key:"1234",
+			com:&SendComponent{},
+		},
 	}
+	sender.Operator(originalData)
+	fmt.Println("encrypted&compressed data : ",sentData)
 
-	sender.Operator("Hello World")
-
-	fmt.Println(sentData)
-
-	receiver := &UnzipComponent{
-		com: &ReadComponent{},
+	receiver := &DecryptComponent{
+		key: "1234",
+		com: &UnzipComponent{
+			com:&ReadComponent{},
+		},
 	}
-
 	receiver.Operator(sentData)
-	fmt.Println(recvData)
+	fmt.Println("decrypted&decompressed data : ",recvData)
 }
